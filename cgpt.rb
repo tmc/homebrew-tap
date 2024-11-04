@@ -10,7 +10,7 @@ class Cgpt < Formula
   on_macos do
     on_intel do
       url "https://github.com/tmc/cgpt/releases/download/v0.4.4/cgpt_Darwin_x86_64.tar.gz"
-      sha256 "1f1c2bf43e06cd68362b432e21f5808653ab02c52af148f67d23fde19438705a"
+      sha256 "7877f0de55151d51028c0215cc9d6a7318b96feedc893234b006cf1953f3ca02"
 
       def install
         bin.install "cgpt"
@@ -18,7 +18,7 @@ class Cgpt < Formula
     end
     on_arm do
       url "https://github.com/tmc/cgpt/releases/download/v0.4.4/cgpt_Darwin_arm64.tar.gz"
-      sha256 "43c103126589d9de6566d9028ff82922125dec6e8f89d4006774bca9cd12c8e7"
+      sha256 "35be323cc0545180cbbc31256f4b4748085e9fcdabe5f12b30ef6a658b1fa64c"
 
       def install
         bin.install "cgpt"
@@ -30,7 +30,7 @@ class Cgpt < Formula
     on_intel do
       if Hardware::CPU.is_64_bit?
         url "https://github.com/tmc/cgpt/releases/download/v0.4.4/cgpt_Linux_x86_64.tar.gz"
-        sha256 "317f10aec951293681a07d100120fa54f2b8aff08f835d40e2228f334e020d88"
+        sha256 "fe1d85cc88527e458dd5dee670a80697cd55d2bc5a9e1d54ada6a7516fd16ffe"
 
         def install
           bin.install "cgpt"
@@ -40,7 +40,7 @@ class Cgpt < Formula
     on_arm do
       if Hardware::CPU.is_64_bit?
         url "https://github.com/tmc/cgpt/releases/download/v0.4.4/cgpt_Linux_arm64.tar.gz"
-        sha256 "2c53ac26b0a5623e4345956de16ce9280e352544a1e31ee2799d3c64d8239c35"
+        sha256 "96abbce7594d7b0888f2f20e3c328641a86de7b0b97035c4db2f1907256163ad"
 
         def install
           bin.install "cgpt"
