@@ -5,20 +5,20 @@
 class Cgpt < Formula
   desc "A simple command line tool for working with LLMs."
   homepage "https://github.com/tmc/cgpt"
-  version "0.2.1"
+  version "0.4.4"
 
   on_macos do
-    if Hardware::CPU.intel?
-      url "https://github.com/tmc/cgpt/releases/download/v0.2.1/cgpt_Darwin_x86_64.tar.gz"
-      sha256 "d2d4c5e38644c94d2b70e3f7c161aecb39cb10b8cfff4e37aa0faf5d936b4084"
+    on_intel do
+      url "https://github.com/tmc/cgpt/releases/download/v0.4.4/cgpt_Darwin_x86_64.tar.gz"
+      sha256 "7877f0de55151d51028c0215cc9d6a7318b96feedc893234b006cf1953f3ca02"
 
       def install
         bin.install "cgpt"
       end
     end
-    if Hardware::CPU.arm?
-      url "https://github.com/tmc/cgpt/releases/download/v0.2.1/cgpt_Darwin_arm64.tar.gz"
-      sha256 "d177770e0083798e0f8b0ef6dfb1aa8fb56442dde14fa9b25480b6eaa510aa37"
+    on_arm do
+      url "https://github.com/tmc/cgpt/releases/download/v0.4.4/cgpt_Darwin_arm64.tar.gz"
+      sha256 "35be323cc0545180cbbc31256f4b4748085e9fcdabe5f12b30ef6a658b1fa64c"
 
       def install
         bin.install "cgpt"
@@ -27,21 +27,30 @@ class Cgpt < Formula
   end
 
   on_linux do
-    if Hardware::CPU.intel?
-      url "https://github.com/tmc/cgpt/releases/download/v0.2.1/cgpt_Linux_x86_64.tar.gz"
-      sha256 "6dbb65be25868f2cc596948b435165696948c9e563ec3821b0aaecd6fad46d14"
+    on_intel do
+      if Hardware::CPU.is_64_bit?
+        url "https://github.com/tmc/cgpt/releases/download/v0.4.4/cgpt_Linux_x86_64.tar.gz"
+        sha256 "fe1d85cc88527e458dd5dee670a80697cd55d2bc5a9e1d54ada6a7516fd16ffe"
 
-      def install
-        bin.install "cgpt"
+        def install
+          bin.install "cgpt"
+        end
       end
     end
-    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/tmc/cgpt/releases/download/v0.2.1/cgpt_Linux_arm64.tar.gz"
-      sha256 "8906909277829cee0bd212de0bf1efb6f2c8657a8c70f0956a01476c343ce176"
+    on_arm do
+      if Hardware::CPU.is_64_bit?
+        url "https://github.com/tmc/cgpt/releases/download/v0.4.4/cgpt_Linux_arm64.tar.gz"
+        sha256 "96abbce7594d7b0888f2f20e3c328641a86de7b0b97035c4db2f1907256163ad"
 
-      def install
-        bin.install "cgpt"
+        def install
+          bin.install "cgpt"
+        end
       end
     end
+  end
+
+  head do
+    url "https://github.com/tmc/cgpt.git"
+    depends_on "pkg-config" => :build
   end
 end
